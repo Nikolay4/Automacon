@@ -1,0 +1,198 @@
+﻿
+input[type="datetime" i]:disabled, input[type="datetime-local" i]:disabled, input[type="email" i]:disabled, input[type="month" i]:disabled, input[type="password" i]:disabled, input[type="number" i]:disabled, input[type="search" i]:disabled, input[type="tel" i]:disabled, input[type="text" i]:disabled, input[type="time" i]:disabled, input[type="url" i]:disabled, input[type="week" i]:disabled 
+{
+    background-color: #E7EEF5;
+}
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    background-color:#f2f2f2;
+    width:100%;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"] {
+    max-width: 100%;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}
+
+
+
+text.redtext {
+    color:red
+}
+
+/*tabs*/
+.korpus > div, .korpus > input { display: none; }
+.korpus > div { 
+    margin-left:1px; 
+    padding:20px 20px 40px 20px;
+    background-color:#E7EEF5;
+}
+.korpus label.lbl { 
+    vertical-align: bottom;
+    padding: 5px; 
+    border: 1px solid #aaa;
+    line-height: 28px; 
+    cursor: pointer; 
+    position: relative; 
+    margin-bottom: 0px; 
+    font-weight:normal;
+    background-color:#E7EEF5;
+    margin-left:1px;
+    margin-right:1px; 
+    margin-bottom:1px;
+    background-color: rgb(48, 155, 215);
+    color: white;
+    border-radius: 10px 10px 0px 0px; 
+}
+.korpus input[type="radio"]:checked + label { 
+    padding:10px;
+    background-color: #E7EEF5;
+    border-bottom: 5px solid #E7EEF5;
+    margin-bottom: -2px;
+    color: black;
+}
+
+.korpus > input:nth-of-type(1):checked ~ div:nth-of-type(1),
+.korpus > input:nth-of-type(2):checked ~ div:nth-of-type(2) { display: block; border: 1px solid #aaa; }
+
+/*пустые картинки в treeview*/
+img[src="../''"] {
+    display: none;
+}
+
+/*div для кнопки ответа на сообщение*/
+#button_newmess {
+    padding:0px 0px 15px 10px;
+}
+
+/*div с ответом*/
+.question {
+    padding:5px;       
+}
+
+/*кнопки*/
+.Button {
+    background-color: white;
+    color: black;
+    border: 1px solid #dedfe1 ; 
+    border-radius:2px;
+
+}
+
+/*зеленая кнопка*/
+.Button_ok {
+    background-color: white;
+    color: black;
+    border: 1px solid #dedfe1; /* Green */
+    border-radius:2px;
+}
+
+.Button_ {
+
+    color: rgba(0,0,0,0.24);
+    border: 1px solid #dedfe1; /* Green */
+    border-radius:2px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f6f8+0,d8e1e7+1,b5c6d0+51,e0eff9+100 */
+background: rgb(242,246,248); /* Old browsers */
+
+}
+
+/*красная кнопка*/
+.Button_error {
+    background-color: white;
+    color: black;
+    border: 1px solid #dedfe1;
+    border-radius:2px;
+}
+
+/*подсветка кнопок при наведении*/
+.Button:hover, .Button_error:hover, .Button_ok:hover {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 10px 15px 0 rgba(0,0,0,0.19);
+}
+
+/*ветка в комментариях*/
+.node span {
+    /*border-color: aquamarine;
+    border-style: solid;
+    border-width: 1px;*/
+    /*background-color:powderblue;*/
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    height: 4em;
+    line-height: 1.6em;
+}
+
+
+#accept_button {
+    min-width:150px;
+}
+
+/*всплывающее окно фон*/
+#wrap {
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: rgba(1, 1, 1, 0.725);
+    z-index: 100;
+    overflow: auto;
+}
+
+/*всплывающее окно*/
+#window {
+    width: 80%;
+    height: 80%;
+    margin: 50px auto;
+    display: none;
+    background: #fff;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+}
+
+/*всплывающее окно конопка закрыть*/
+.close {
+    margin-left: 364px;
+    margin-top: 4px;
+    cursor: pointer;
+}
