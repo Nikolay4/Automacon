@@ -69,6 +69,18 @@
             });
      
 
+            var div = document.getElementById("asdf");
+            div.onclick = function (e) {
+                //var filters = document.getElementById("wrap_filters");
+                if ($(".wrap_filters").hasClass("hidden_filters")) {
+                    $(".wrap_filters").removeClass("hidden_filters");
+                }
+                else {
+                    $(".wrap_filters").addClass("hidden_filters");
+                }
+            }
+
+
 
             //DoubleScroll(document.getElementById('main_table'));
 
@@ -234,7 +246,8 @@
                     </div>
                     <div style="width:100%; height: 1px; clear: both;" >.</div>
                     <div class="main_wrap">
-                        <div class="wrap_filters" style="">
+                        <div class="wrap_filters" id="wrap_filters" style="">
+                            <div id="asdf">></div>
                             <table class="filters">
                                 <tr>
                                     <td>
@@ -405,7 +418,6 @@
                                 <SortedDescendingHeaderStyle VerticalAlign="Middle" CssClass="sortdesc" BackColor="#003300" />
                             </asp:GridView>
                         </div>
-                        
                     </div>
                     <div class="hide" id="rmenu">
                     </div>
@@ -501,7 +513,7 @@
         }
          
         .filters td {
-            width:120px;
+            /*width:120px;*/
             padding:5px;
             overflow:hidden;
         }
@@ -509,6 +521,15 @@
         .filters {
             border: 1px solid #DEDFE1; 
             border-radius: 10px; 
+            display:block;           
+        }
+
+        #wrap_filters.hidden_filters > .filters {
+            width:0px;
+            display:none;
+        }
+        .hidden_filters {
+            /*width:0px;*/
         }
         .main_wrap > div {
             
@@ -519,8 +540,12 @@
             white-space: nowrap;
         }
         
-        .wrap_filters {
+        #wrap_filters.hidden_filters {
             
+            width:0px;
+        }
+
+        .wrap_filters {
             float:right;
             text-align:left;
             vertical-align:top; 
@@ -529,6 +554,11 @@
             font-weight: bold; 
             height: inherit; 
             margin-left: 10px;
+            transition:width 2s;
+            -moz-transition:width 2s; /* Firefox 4 */
+            -webkit-transition:width 2s; /* Safari and Chrome */
+            -o-transition:width 2s; /* Opera */
+            display:block;
         }
 
         td select {
@@ -545,6 +575,7 @@
             /*max-width: 75%;*/
             /*min-width:950px; */
             margin-left: 10px;
+    
         }
 
         .paginator input[type=image]{
