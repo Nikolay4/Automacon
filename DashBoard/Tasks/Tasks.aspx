@@ -73,10 +73,14 @@
             div.onclick = function (e) {
                 //var filters = document.getElementById("wrap_filters");
                 if ($(".wrap_filters").hasClass("hidden_filters")) {
+                    div.innerHTML =">>";
                     $(".wrap_filters").removeClass("hidden_filters");
+                    $(".filters").show('slow');
                 }
                 else {
+                    div.innerHTML = "<<";
                     $(".wrap_filters").addClass("hidden_filters");
+                    $(".filters").hide('slow');
                 }
             }
 
@@ -247,7 +251,7 @@
                     <div style="width:100%; height: 1px; clear: both;" >.</div>
                     <div class="main_wrap">
                         <div class="wrap_filters" id="wrap_filters" style="">
-                            <div id="asdf">></div>
+                            <div id="asdf">>></div>
                             <table class="filters">
                                 <tr>
                                     <td>
@@ -524,12 +528,8 @@
             display:block;           
         }
 
-        #wrap_filters.hidden_filters > .filters {
-            width:0px;
-            display:none;
-        }
-        .hidden_filters {
-            /*width:0px;*/
+        #asdf:hover {
+            cursor:pointer;
         }
         .main_wrap > div {
             
@@ -541,8 +541,7 @@
         }
         
         #wrap_filters.hidden_filters {
-            
-            width:0px;
+            /*width:0px;*/
         }
 
         .wrap_filters {
