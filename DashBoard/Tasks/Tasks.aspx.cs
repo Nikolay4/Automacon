@@ -115,15 +115,9 @@ namespace DashBoard.Tasks
             {
                 // Получаем задачи
                 GetTasks(FilterIsActive);
+                // Применяем фильтры
                 AttemptFilters();
             }
-        }
-
-
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            //GetFiltersFromSession();
-            //AttemptFilters();
         }
 
         protected void SetSelected()
@@ -157,13 +151,7 @@ namespace DashBoard.Tasks
             }
             DropDownList_IsActive.SelectedValue = FilterIsActive ? "Только активные" : "Все";
         }
-        
-        protected void GridView_TaskList_Sorted(object sender, EventArgs e)
-        {
-
-        }
-
-        
+                
         public void BindData()
         {
             GridView_TaskList.DataSource = null;
@@ -281,10 +269,6 @@ namespace DashBoard.Tasks
         // Сброс всех фильтров
         protected void ClearFilters_Click(object sender, EventArgs e)
         {
-            ClearFilrter();
-        }
-        protected void ClearFilrter()
-        {
             currTasks = allTasks;
             TextBox8.Text = "";
             FilterContact = "Все";
@@ -293,7 +277,7 @@ namespace DashBoard.Tasks
             SetSelected();
             BindData();
         }
-        
+                
         // редактируем выпадающие списки
         // выберем из столбца уникальные записи и поместим в выпадающий список + 
         protected void SetDrops()
@@ -324,13 +308,10 @@ namespace DashBoard.Tasks
             FilterContact = DropDownList_Contacts.SelectedValue.ToString();
             FilterType    = DropDownList_Types.SelectedValue.ToString();
             FilterStatus  = DropDownList_Statuses.SelectedValue.ToString();
-
-            //Session[SessionFilterTypeName] = DropDownList_Types.SelectedValue.ToString();
-            //Session[SessionFilterStatusName] = DropDownList_Statuses.SelectedValue.ToString();
-            //Session[SessionFilterContactName] = DropDownList_Contacts.SelectedValue.ToString();
             AttemptFilters();
         }
 
+        // Применить фильтры
         protected void AttemptFilters()
         {
             currTasks = allTasks;
@@ -350,7 +331,6 @@ namespace DashBoard.Tasks
         protected void GridView_TaskList_SelectedIndexChanged(object sender, EventArgs e)
         {
             TaskModel task = currTasks[GridView_TaskList.SelectedIndex + GridView_TaskList.PageIndex* GridView_TaskList.PageSize];
-            //string id = System.Text.RegularExpressions.Regex.Replace(task.Number, @"\s+", ""); // убрать пробелы
             string url = "/Tasks/Task/" + HttpUtility.UrlEncode(task.Number.Replace(" ", string.Empty).Replace(".","_"));
             Response.Redirect(url);
         }
@@ -371,7 +351,6 @@ namespace DashBoard.Tasks
 
                 e.Row.Attributes.Add("oncontextmenu", "OpenNewTab('" + url + "');return false;");
                 e.Row.Attributes["onmouseout"] = "this.style.backgroundColor='#FFFFFF';";
-                //e.Row.ToolTip = currTasks[e.Row.RowIndex].Name;
             }
         }
 
@@ -382,18 +361,15 @@ namespace DashBoard.Tasks
             AttemptFilters();
         }
 
+        //Перелистывание страницы
         protected void GridView_TaskList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView_TaskList.PageIndex = e.NewPageIndex;
             GridView_TaskList.DataSource = currTasks;
             GridView_TaskList.DataBind();
         }
-
-        protected void Button_AddTask_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        // Кнопка поиска
         protected void ButtonClearSearch_Click(object sender, EventArgs e)
         {
             TextBox8.Text = "";
